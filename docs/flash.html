@@ -1,58 +1,118 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<script src="jquery-3.6.0.min.js"></script>
+		<script
+		  type="module"
+		  src="https://unpkg.com/esp-web-tools@9.0.5/dist/web/install-button.js?module"
+		></script>
+		<style type="text/css">
+			* {
+				font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+			}
+			h1{
+				margin-bottom: 5px;
+			}
+			h3{
+				margin-bottom: 5px;
+			}
+			p {
+				margin-top: 0px;
+			}
+		</style>	
+	</head>
 <body>
-    <h1>ratgdo web installer for mqtt integrations</h1>
-	<h2>Choose the right version for your ratgdo hardware!</h2>
-	<script src="jquery-3.6.0.min.js"></script>
-	<script
-	  type="module"
-	  src="https://unpkg.com/esp-web-tools@9.0.5/dist/web/install-button.js?module"
-	></script>
-	<style type="text/css">
-		* {
-			font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-		}
-	</style>
-	
-	<label for="selectManifest">Choose version:</label>
-	<select id="selectManifest" onchange="setManifest()">
-		<option value="">Please Choose Firmware Version:</option>
-		<optgroup label="Black v2.5 Boards Only">
-			<option value="flasher/manifest_v25.json">ratgdo v2.51, Security + 1.0, 2.0 & Dry Contact</option>
-		</optgroup>
-		<optgroup label="White v2.0 Boards Only">
-			<option value="flasher/manifest_v2.json">ratgdo v2.2, Security + 2.0</option>
-			<option value="flasher/manifest_v2_no_wifi.json">ratgdo v2.2, Security + 2.0 (WiFi disabled)</option>
-			<option value="flasher/manifest_v2_alpha.json">ratgdo v2.26a, Security + 2.0 (secplus 1.0 alpha)</option>
-		</optgroup>
-		<optgroup label="Blue v1.0 Boards Only">
-			<option value="flasher/manifest_v1.json">ratgdo v1.8, Security + 2.0</option>
-			<option value="flasher/manifest_v1_no_wifi.json">ratgdo v1.8, Security + 2.0 (WiFi disabled)</option>
-		</optgroup>
-		<!-- <optgroup label="Debugging">
-			<option value="flasher/manifest_serial_dump.json">secplus 1.0 serial dump</option>
-		</optgroup> -->
-		<!-- <option value="flasher/manifest_alpha.json">ratgdo v1.71a</option> -->
-	</select>
-	<br/>
-	
-	<h4>ESP Home:</h4>
-	<p>If you want to use ESPHome with Home Assistant instead of MQTT, check out the <a href="https://ratgdo.github.io/esphome-ratgdo/" target="_blank">ESPHome port</a> & <a href="https://github.com/ratgdo/esphome-ratgdo">GitHub Repo</a>.</p>
+	<img src="images/ratgdo.png" alt="ratgdo" style="float: left; width: 100px; border-radius: 4px;" />
+	<div style="padding-left: 105px; margin-bottom: 15px">
+		<h1>ratgdo Firmware</h1>
+		<p>There are several excellent firmware options available for ratgdo. Choose the one that best suits your needs.</p>
+		<p><strong>For a comparison of available features for the different firmware options, please refer to the <a href="https://paulwieland.github.io/ratgdo/01_features.html">feature matrix</a>.</strong></p>
+	</div>
 
-	<p>For a comparison of available features for the different firmware options, please refer to the <a href="https://paulwieland.github.io/ratgdo/01_features.html">feature matrix</a>.</p>
+	<hr style="clear:both;" />
 
-	<!-- <h4>Native HomeKit:</h4>
-	<p>A native HomeKit version of ratgdo is in development <a href="https://ratgdo.github.io/homekit-ratgdo/" target="_blank">HomeKit port</a> & <a href="https://github.com/ratgdo/esphome-ratgdo">GitHub Repo</a>.</p> -->
+	<img src="images/esphome_logo.png" alt="ESPHome" style="float: left; width: 75px;" />
+	<div style="padding-left: 80px; margin-bottom: 15px">
+		<h3>ESPHome</h3>
+		<p>The best option for Home Assistant is the ESPHome ratgdo firmware: [<a href="https://ratgdo.github.io/esphome-ratgdo/">ESPHome installer</a>].</p>
+		<p>Home Assistant can be used to create HomeKit, Google and Alexa integrations, as well as many others.</p>
+	</div>
 
+	<div style="padding-left: 50px">
+		<h3>Chowmain Software Integrations</h3>
+		<p>Chowmain Software provides several home automation integration drivers for ratgdo. All integration drivers provided by <a href="http://chowmain.software/">Chowmain Software</a> require the <a href="https://ratgdo.github.io/esphome-ratgdo/">ESPHome ratgdo firmware</a>, as well as the integration driver itself.</p>
+		<img src="images/control4_logo.png" alt="Control4" style="float: left; width: 50px;" />
+		<div style="padding-left: 65px; margin-bottom: 15px">
+			<h3>Control4</h3>
+			<p>ESPHome to Control4 integration driver by Chowmain Software. [<a href="https://chowmain.software/drivers/control4-ratgdo">driver link</a>]</p>
+		</div>
+
+		<img src="images/nice_logo.png" alt="Nice (Elan Home Management)" style="float: left; width: 50px; border-radius: 4px;" />
+		<div style="padding-left: 65px; margin-bottom: 15px">
+			<h3>Nice / Elan</h3>
+			<p>ESPHome to Nice (formerly Elan Home Management) integration driver by Chowmain Software. [<a href="https://chowmain.software/drivers/elan-ratgdo">driver link</a>]</p>
+		</div>
+
+		<img src="images/crestron_logo.png" alt="Crestron" style="float: left; width: 50px; border-radius: 4px;" />
+		<div style="padding-left: 65px; margin-bottom: 15px">
+			<h3>Crestron</h3>
+			<p>ESPHome to Crestron integration driver by Chowmain Software. [<a href="https://chowmain.software/drivers/crestronhome-ratgdo">driver link</a>]</p>
+		</div>
+
+	</div>
+
+	<img src="images/homekit_logo.png" alt="HomeKit" style="float: left; width: 75px; clear: left;" />
+	<div style="padding-left: 80px; margin-bottom: 15px">
+		<h3>Native HomeKit</h3>
+		<p>For those who want a pure Apple HomeKit solution, install the [<a href="https://ratgdo.github.io/homekit-ratgdo/flash.html">HomeKit for ratgdo</a>] firmware.</p>
+		<p style="font-size: 75%"><em>Note that the HomeKit firmware is currently limited to Security + 2.0 openers with a yellow learn button.</em></p>
+	</div>
+
+	<img src="images/mqtt_logo.png" alt="HomeKit" style="float: left; width: 75px; clear: left;" />
+	<div style="padding-left: 80px; margin-bottom: 15px">
+		<h3>MQTT</h3>
+		<p>If you already have an MQTT broker and like messaging APIs, then install the MQTT firmware:</p>
+		<label for="selectManifest">Choose version:</label>
+		<select id="selectManifest" onchange="setManifest()">
+			<option value="">Please Choose Firmware Version:</option>
+			<optgroup label="Black v2.5x Boards Only">
+				<option value="flasher/manifest_v25.json">ratgdo v2.59, Security + 1.0, 2.0 & Dry Contact</option>
+			</optgroup>
+			<optgroup label="White v2.0 Boards Only">
+				<option value="flasher/manifest_v2.json">ratgdo v2.29, Security + 2.0</option>
+				<option value="flasher/manifest_v2_no_wifi.json">ratgdo v2.29, Security + 2.0 (WiFi disabled)</option>
+			</optgroup>
+			<optgroup label="Blue v1.0 Boards Only">
+				<option value="flasher/manifest_v1.json">ratgdo v1.8, Security + 2.0</option>
+				<option value="flasher/manifest_v1_no_wifi.json">ratgdo v1.8, Security + 2.0 (WiFi disabled)</option>
+			</optgroup>
+			<!-- <optgroup label="Debugging">
+				<option value="flasher/manifest_serial_dump.json">secplus 1.0 serial dump</option>
+			</optgroup> -->
+			<!-- <option value="flasher/manifest_alpha.json">ratgdo v1.71a</option> -->
+		</select>
+		<esp-web-install-button manifest="" id="manifest"></esp-web-install-button>
 	
-	<h4>Drivers</h4>
-	<p>If you can't connect to your ratgdo board make sure you have the right driver installed for the type of board you have.</p>
+	</div>
+
+
+	<hr style="clear:both" />
+
+	<h3>Driver and Firmware Installation Help</h3>
+	<iframe width="640" height="360" src="https://youtube.com/embed/9WecAUTC9iI"></iframe>
+
+	<h3>Drivers</h3>
+	<p>If you can't connect to your ratgdo board make sure you are using a USB data cable and that you have the right driver installed for the type of board you have.</p>
 	<ul>
 		<li>ratgdo v2.5i uses a CH340 USB to Serial chipset. [<a href="https://www.wch-ic.com/downloads/CH341SER_EXE.html" target="_blank">driver download</a>]</li>
 		<li>Most D1 Minis use an FTDI USB to Serial chipset. [<a href="https://ftdichip.com/drivers/vcp-drivers/" target="_blank">driver download</a>]</li>
 	</ul>
 
-    <esp-web-install-button manifest="" id="manifest"></esp-web-install-button>
+
+	<h3>Downloading firmware files for OTA Updates</h3>
+	<p>In order to do an OTA update, you have to download the .bin file to your computer and then upload it to the ratgdo web server.</p>
+	<p>The firmware bin files are located <a href="https://github.com/ratgdo/mqtt-ratgdo/releases">under releases</a>.</p>
+
 	<script>
 		var manifest = $("#manifest").attr("manifest",`flasher/manifest.json`);
 

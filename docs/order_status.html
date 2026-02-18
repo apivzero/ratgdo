@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-    <h1>Order Status</h1>
+	<h1>Order Status</h1>
 	<h2 id="last_update"></h2>
 	<script src="jquery-3.6.0.min.js"></script>
 	<style type="text/css">
@@ -11,7 +11,6 @@
 
 		
 	</style>
-	
 	<table id="order_status" cellspacing="0">
 		<thead>
 			<tr>
@@ -25,8 +24,7 @@
 		</tbody>
 	</table>
 
-	<p style="font-size: 90%"><em>in transit means the production run is on it's way to me. This duration has been varying due to the holiday season. Once received, orders will be kitted and shipped immediately.</em></p>
-
+	<p>If your order date is not listed, it means your order shipped. Check your email for a notification from Shippo which will have your tracking number.</p>
 	<script>
 		function calculate(first, second, percentage) {
 			let result = {};
@@ -42,64 +40,33 @@
 			return result;
 		}
 
-		var data = `last update 2023-11-26		
+		var data = `last update 2024-02-24
 order date	production %	state
-2023-10-23	100%	in transit
-2023-10-24	100%	in transit
-2023-10-25	100%	in transit
-2023-10-26	100%	in transit
-2023-10-27	100%	in transit
-2023-10-28	100%	in transit
-2023-10-29	100%	in transit
-2023-10-30	100%	in transit
-2023-10-31	100%	in transit
-2023-11-01	100%	in transit
-2023-11-02	100%	in transit
-2023-11-03	100%	in transit
-2023-11-04	100%	in transit
-2023-11-05	76%	in production
-2023-11-06	76%	in production
-2023-11-07	76%	in production
-2023-11-08	76%	in production
-2023-11-09	76%	in production
-2023-11-10	70%	in production
-2023-11-11	70%	in production
-2023-11-12	70%	in production
-2023-11-13	70%	in production
-2023-11-14	70%	in production
-2023-11-15	70%	in production
-2023-11-16	70%	in production
-2023-11-17	70%	in production
-2023-11-18	70%	in production
-2023-11-19	70%	in production
-2023-11-20	70%	in production
-2023-11-21	70%	in production
-2023-11-22	1%	in production
-2023-11-23	1%	in production
-2023-11-24	1%	in production`.split("\n");
+2024-02-24	100%	kitting
+`.split("\n");
 
 		var table = $("#order_status tbody");
 		$("#last_update").html(data.shift());
 		data.shift();
 
-		data.forEach(e => {
-			var row = $('<tr>');
+		// data.forEach(e => {
+		// 	var row = $('<tr>');
 			
-			e.split("\t").forEach((c,i) => {
-				console.log(i);
-				var style = ``;
-				if(i == 1){
-					var num = parseFloat(c.replace('%',''));
-					num = num / 100;
+		// 	e.split("\t").forEach((c,i) => {
+		// 		console.log(i);
+		// 		var style = ``;
+		// 		if(i == 1){
+		// 			var num = parseFloat(c.replace('%',''));
+		// 			num = num / 100;
 
-					var color = calculate({r: 247,g:243,b:126},{r: 50, g: 168, b: 83},num);
-					style = `style="background-color: rgb(${color['r']},${color['g']},${color['b']})"`;
-				}
-				row.append(`<td ${style}>${c}</td>`);
-			});
+		// 			var color = calculate({r: 247,g:243,b:126},{r: 50, g: 168, b: 83},num);
+		// 			style = `style="background-color: rgb(${color['r']},${color['g']},${color['b']})"`;
+		// 		}
+		// 		row.append(`<td ${style}>${c}</td>`);
+		// 	});
 
-			table.append(row);
-		});
+		// 	table.append(row);
+		// });
 	</script>
 </body>
 </html>

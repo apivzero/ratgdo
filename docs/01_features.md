@@ -8,9 +8,9 @@ TOC
 * [FAQ & Troubleshooting](09_faq.md)
 
 ## Features
-ratgdo detects the garage door's position (opening, open, closing, closed) from the encrypted signal wire. No soldering or additional sensors are required to get the door status. Three simple wires (Ground, Control and Obstruction) are connected to the terminals of the garage door opener.
+If you have a security + 2.0 door opener, or a security + 1.0 opener with compatible wall control panel, ratgdo detects the garage door's position (opening, open, closing, closed) from the signal wire. No soldering or additional sensors are required to get the door status. Three simple wires (Ground, Control and Obstruction) are connected to the terminals of the garage door opener.
 
-See [v1 Features](01_features_v1.md) if you have a an original ratgdo with a blue printed circuit board.
+If you have a dry contact control door opener (e.g. Genie, old Chamberlain, etc) then ratgdo can control your door and detect the door's position using two simple reed switches (not included).
 
 ## Feature Matrix
 The features supported depend on the type of garage door opener you have and the firmware you are using. This table is meant to help clarify what features work with which opener.
@@ -18,13 +18,13 @@ The features supported depend on the type of garage door opener you have and the
 Firmware types:
 
 * <strong><a href="http://github.com/ratgdo/mqtt-ratgdo">M</a></strong>QTT - for MQTT based home automation integration (NodeRED, Home Assistant, etc)
-* <strong><a href="http://github.com/ratgdo/esphome-ratgdo">E</a></strong>SP Home - for ESP Home / Home Assistant
-* <strong><a href="http://github.com/ratgdo/homekit-ratgdo">H</a></strong>omeKit - (in development) if you just want iOS integration without the need for a home automation platform
+* <strong><a href="http://github.com/ratgdo/esphome-ratgdo">E</a></strong>SP Home - for ESPHome / Home Assistant
+* <strong><a href="http://github.com/ratgdo/homekit-ratgdo">H</a></strong>omeKit - if you just want iOS integration without the need for a home automation server
 
 <ul>
 	<li>X - fully supported</li>
 	<li>o - partial support, see note</li>
-	<li>+ - coming soon</li>
+	<li>+ - implementation is possible</li>
 </ul>
 
 <table>
@@ -42,8 +42,8 @@ Firmware types:
 	</tr>
 	<tr>
 		<th style="width: 25%;">&nbsp;</th>
-		<th style="border-right: 1px solid #e5e5e5; width: 25%" colspan="3">Yellow Learn Button</th>
-		<th style="border-right: 1px solid #e5e5e5; width: 25%" colspan="3">Purple, Red, Orange Learn Buttons</th>
+		<th style="border-right: 1px solid #e5e5e5; width: 25%" colspan="3">Yellow Learn Button<sup>5</sup></th>
+		<th style="border-right: 1px solid #e5e5e5; width: 25%" colspan="3">Purple, Orange, Red<sup>6</sup> Learn Buttons</th>
 		<th style="width: 25%" colspan="3">&nbsp;</th>
 	</tr>
 	<tr>
@@ -66,10 +66,10 @@ Firmware types:
 		<th>Door Control</th>
 		<td style="text-align: center;">X</td>
 		<td style="text-align: center;">X</td>
-		<td style="text-align: center; border-right: 1px solid #e5e5e5;">+</td>
+		<td style="text-align: center; border-right: 1px solid #e5e5e5;">X</td>
 
 		<td style="text-align: center;">X</td>
-		<td style="text-align: center;">+</td>
+		<td style="text-align: center;">X</td>
 		<td style="text-align: center; border-right: 1px solid #e5e5e5;">+</td>
 
 		<td style="text-align: center;">X</td>
@@ -81,11 +81,11 @@ Firmware types:
 		<th>Door Status</th>
 		<td style="text-align: center;">X</td>
 		<td style="text-align: center;">X</td>
-		<td style="text-align: center; border-right: 1px solid #e5e5e5;">+</td>
+		<td style="text-align: center; border-right: 1px solid #e5e5e5;">X</td>
 
 		<td style="text-align: center; color: red;">X/O<sup>4</sup></td>
-		<td style="text-align: center;">+</td>
-		<td style="text-align: center; border-right: 1px solid #e5e5e5;">+</td>
+		<td style="text-align: center; color: red;">X/O<sup>4</sup></td>
+		<td style="text-align: center; border-right: 1px solid #e5e5e5;">+<sup>4</sup></td>
 
 		<td style="text-align: center;">o<sup>1</sup></td>
 		<td style="text-align: center;">+<sup>1</sup></td>
@@ -95,10 +95,10 @@ Firmware types:
 		<th>Light Control</th>
 		<td style="text-align: center;">X</td>
 		<td style="text-align: center;">X</td>
-		<td style="text-align: center; border-right: 1px solid #e5e5e5;">+</td>
+		<td style="text-align: center; border-right: 1px solid #e5e5e5;">X</td>
 
 		<td style="text-align: center;">X</td>
-		<td style="text-align: center;">+</td>
+		<td style="text-align: center;">X</td>
 		<td style="text-align: center; border-right: 1px solid #e5e5e5;">+</td>
 
 		<td style="text-align: center;">&nbsp;</td>
@@ -109,10 +109,10 @@ Firmware types:
 		<th>Light Status</th>
 		<td style="text-align: center;">X</td>
 		<td style="text-align: center;">X</td>
-		<td style="text-align: center; border-right: 1px solid #e5e5e5;">+</td>
+		<td style="text-align: center; border-right: 1px solid #e5e5e5;">X</td>
 
 		<td style="text-align: center;">X</td>
-		<td style="text-align: center;">+</td>
+		<td style="text-align: center;">X</td>
 		<td style="text-align: center; border-right: 1px solid #e5e5e5;">+</td>
 
 		<td style="text-align: center;">&nbsp;</td>
@@ -123,10 +123,10 @@ Firmware types:
 		<th>Obstruction Status</th>
 		<td style="text-align: center;">X</td>
 		<td style="text-align: center;">X</td>
-		<td style="text-align: center; border-right: 1px solid #e5e5e5;">+</td>
+		<td style="text-align: center; border-right: 1px solid #e5e5e5;">X</td>
 
 		<td style="text-align: center;">X</td>
-		<td style="text-align: center;">+</td>
+		<td style="text-align: center;">X</td>
 		<td style="text-align: center; border-right: 1px solid #e5e5e5;">+</td>
 
 		<td style="text-align: center;">o<sup>2</sup></td>
@@ -137,10 +137,10 @@ Firmware types:
 		<th>Wireless Remote Lockout</th>
 		<td style="text-align: center;">X</td>
 		<td style="text-align: center;">X</td>
-		<td style="text-align: center; border-right: 1px solid #e5e5e5;">+</td>
+		<td style="text-align: center; border-right: 1px solid #e5e5e5;">X</td>
 
-		<td style="text-align: center;">+</td>
-		<td style="text-align: center;">+</td>
+		<td style="text-align: center;">X</td>
+		<td style="text-align: center;">X</td>
 		<td style="text-align: center; border-right: 1px solid #e5e5e5;">+</td>
 
 		<td style="text-align: center;">&nbsp;</td>
@@ -151,10 +151,10 @@ Firmware types:
 		<th>Motion Detection</th>
 		<td style="text-align: center;">o<sup>3</sup></td>
 		<td style="text-align: center;">o<sup>3</sup></td>
-		<td style="text-align: center; border-right: 1px solid #e5e5e5;">+<sup>3</sup></td>
+		<td style="text-align: center; border-right: 1px solid #e5e5e5;">o<sup>3</sup></td>
 
-		<td style="text-align: center;">&nbsp;</td>
-		<td style="text-align: center;">&nbsp;</td>
+		<td style="text-align: center;">o<sup>3</sup></td>
+		<td style="text-align: center;">o<sup>3</sup></td>
 		<td style="text-align: center; border-right: 1px solid #e5e5e5;">&nbsp;</td>
 
 		<td style="text-align: center;">&nbsp;</td>
@@ -166,8 +166,10 @@ Firmware types:
 
 1. Openers with dry contact control require that limit switches be connected to ratgdo to detect the door state. See [Dry Contact Wiring](03_wiring.md).
 1. Obstruction sensors must have a peak voltage between 4.5 and 7 volts.
-1. Motion detection requires a wall control panel with a built in motion detector such as the 889LM.
-1. Security + 1.0 openers can report door status over the data line, but not all wall panels are compatible. ratgdo listens for a wall panel to communicate with the door, and if it detects one (such as an [889LM](https://www.google.com/search?q=889lm+chamberlain)) it listens and reports the door status. If ratgdo doesn't hear wall panel communication then it switches to emulation mode, where it streams the query commands necessary to get the door opener status. Emulation mode will cause certain "dumb" wall panels (e.g. [78LM](https://www.google.com/search?q=78LM+chamberlain)) to not be able to control the lights or lockout the wireless remotes because their commands will be obscured by the door status polling.
+1. Motion detection requires a wall control panel with a built in motion detector such as the 880LMW. On Security + 1.0, motion detection is reported when the light turns on.
+1. Security + 1.0 openers can report door status over the data line, but not all wall panels are compatible. ratgdo listens for a wall panel to communicate with the door, and if it detects one (such as an [889LM](https://www.google.com/search?q=889lm+liftmaster)) or [041A7928-3MC](https://www.google.com/search?q=041A7928-3MC+chamberlain) it listens and reports the door status. If ratgdo doesn't hear wall panel communication then it switches to emulation mode, where it streams the query commands necessary to get the door opener status. Emulation mode will cause analog wall panels (e.g. [78LM](https://www.google.com/search?q=78LM+chamberlain)) to not be able to control the lights or lockout the wireless remotes because their analog commands will be ignored by the door opener.
+1. All yellow learn button openers are Security + 2.0 EXCEPT the jackshaft wall mounted 8500/RJ020 & 8500C/RJ020C which use the Security + 1.0 protocol.
+1. Not all red learn button openers support digital communication. If a red button opener doesn't use digital communication, it will not respond to door open/close commands and it will not report the door status. In such cases, use dry contact control instead of Security + 1.0 control.
 
 
 ### MQTT
@@ -182,12 +184,13 @@ See [Home Assistant](05_homeassistant_example.md) for more information.
 #### Triggers
 The following MQTT commands are supported:
 
-* door/open - opens the door.
-* door/close - closes the door.
-* light/on - turns the light on.
-* light/off - turns the light off.
-* lock/lock - locks out the wiresss remotes.
-* lock/unlock - unlocks the use of wireless remotes.
+* command/door:open - opens the door.
+* command/door:close - closes the door.
+* command/light:on - turns the light on.
+* command/light:off - turns the light off.
+* command/lock:lock - locks out the wiresss remotes.
+* command/lock:unlock - unlocks the use of wireless remotes.
+* command:query - queries the door opener for current status.
 
 ##### Examples
 
@@ -239,12 +242,6 @@ The following statuses are broadcast over MQTT:
 		</ul>
 	</li>
 </ul>
-
-### ESPHome
-There is an ESPHome port of ratgdo available. For the time being this port might not be feature compatible with the MQTT version of ratgdo.
-
-* [Web Tools installer](https://ratgdo.github.io/esphome-ratgdo/)
-* [GitHub Repo](https://github.com/ratgdo/esphome-ratgdo)
 
 
 ### Dry contacts
